@@ -1,0 +1,22 @@
+{
+    "name": "LoLPiggy",
+    "manifest_version": 2,
+    "version": "0.11",
+    "description": "Instant League of Legends Player and guides look up",
+    "options_page": "options.html",
+    "browser_action": {
+        "default_icon": "icon.png",
+        "default_popup": "popup.html"
+    },
+    "icons": {
+        "16": "icon.png",
+        "48": "icon.png",
+        "128": "icon.png"
+    },
+    "background": {
+        "scripts": ["background.js", "jquery.js", "jquery.map"]
+    },
+    "permissions": [
+        "tabs", "http://*/*", "https://*/*"
+    ]
+}

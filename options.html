@@ -1,0 +1,188 @@
+<html>
+<head><title>LoLPiggy Settings</title></head>
+
+<style>
+            body { 
+              min-width:250px; 
+              color: white;
+              background: black;
+            }
+            a {
+              color: black;
+            }
+            a:hover {
+              text-decoration: underline;
+            }
+
+            button {
+              font-family: Arial, Helvetica, sans-serif;
+              color: #123d54;
+              background: -moz-linear-gradient(
+                top,
+                #afd9fa 0%,
+                #588fad);
+              background: -webkit-gradient(
+                linear, left top, left bottom, 
+                from(#afd9fa),
+                to(#588fad));
+              -moz-border-radius: 6px;
+              -webkit-border-radius: 6px;
+              border-radius: 6px;
+              border: 1px solid #003366;
+              -moz-box-shadow:
+                0px 1px 3px rgba(000,000,000,0.5),
+                inset 0px 0px 1px rgba(255,255,255,1);
+              -webkit-box-shadow:
+                0px 1px 3px rgba(000,000,000,0.5),
+                inset 0px 0px 1px rgba(255,255,255,1);
+              box-shadow:
+                0px 1px 3px rgba(000,000,000,0.5),
+                inset 0px 0px 1px rgba(255,255,255,1);
+              text-shadow:
+                0px -1px 0px rgba(000,000,000,0.7),
+                0px 1px 0px rgba(255,255,255,0.3);
+            }
+
+            button:hover {
+              cursor: pointer;
+              background: -webkit-gradient(
+                linear, left top, left bottom, 
+                from(#00FF33),
+                to(#00FF33));
+            }
+
+            input[type=text] {
+              border: 1px solid #ccc;
+              border-radius: 3px;
+              box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+              width:160px;
+              min-height: 28px;
+              padding: 4px 20px 4px 8px;
+              font-size: 12px;
+              -moz-transition: all .2s linear;
+              -webkit-transition: all .2s linear;
+              transition: all .2s linear;
+            }
+
+            input[type=text]:hover {
+              border-color: #51a7e8;
+              box-shadow: inset 0 1px 2px rgba(0,0,0,0.1),0 0 5px rgba(81,167,232,0.5);
+              outline: none;
+            }
+
+            select {
+              padding:3px;
+              margin: 0;
+              -webkit-border-radius:4px;
+              -moz-border-radius:4px;
+              border-radius:4px;
+              -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+              -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+              box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+              background: #f8f8f8;
+              color:#888;
+              border:none;
+              outline:none;
+              display: inline-block;
+              -webkit-appearance:none;
+              -moz-appearance:none;
+              appearance:none;
+              cursor:pointer;  
+            }
+
+            label {
+              position:relative;
+              margin-top: 5px;
+            }
+            label:after {
+                content:'<>';
+                font:11px "Consolas", monospace;
+                color:#aaa;
+                -webkit-transform:rotate(90deg);
+                -moz-transform:rotate(90deg);
+                -ms-transform:rotate(90deg);
+                transform:rotate(90deg);
+                right:8px; top:2px;
+                padding:0 0 2px;
+                border-bottom:1px solid #ddd;
+                position:absolute;
+                pointer-events:none;
+            }
+            label:before {
+                content:'';
+                right:6px; top:0px;
+                width:20px; height:20px;
+                background:#f8f8f8;
+                position:absolute;
+                pointer-events:none;
+                display:block;
+            }
+
+            #oinkme,#lolkingme { font-size: 20px; }
+            .byline {font-size:10px;}
+            .quicklinks {font-size:13px;}
+
+            #playerLookup {
+              margin-bottom: 22px;
+            }
+
+            h3 {
+              margin-bottom: 3px;
+              margin-top: 3px;
+            }
+
+	#settings {
+		width: 550px;
+		margin: 100px auto;
+		border: solid 1px black;
+		padding: 20px;
+		background: white;
+		color: black;
+	}
+
+	.thanks {
+		font-size: 12px;
+	}
+
+	.setting-title {
+		font-size: 15px;
+		margin-bottom: 5px;
+		text-decoration: underline;
+	}
+
+	.setting-desc {
+		font-style: italic;
+	}
+</style>
+<body>
+
+<div id="settings">
+		<h3>LolPiggy Settings:</h3>
+		<p class="thanks">Thanks for using my extension. If you have any bug reports or feature requests, message me in game: piggybank (NA Server), I'm also on Reddit: <a href="http://www.reddit.com/user/piggybanklol/">piggybanklol</a>
+		
+		<h4 class="setting-title">Default Summoner</h4>
+		<p class="setting-desc">This is the name that will be use on default "me" search</p>
+
+		<input type="text" id="defaultSummoner">		<button id="save">Save</button>
+		<div id="status"></div>
+		<label>
+		Server: <select id="defaultSummonerServer">
+			<option value="NA">NA</option>
+			<option value="EUW">EUW</option>
+			<option value="EUNE">EUNE</option>
+			<option value="BR">BR</option>
+			<option value="TR">TR</option>
+			<option value="RU">RU</option>
+			<option value="LAN">LAN</option>
+			<option value="LAS">LAS</option>
+			<option value="OCE">OCE</option>
+		</select>
+		</label>
+		<p class="thanks">Need awesome League of Legends wallpapers? Automatic resized wallpapers for all devices <a href="http://www.ggwallpaper.com/league-of-legends-2">ggWallpaper</a>
+</div>
+
+</body>
+
+<script src="options.js"></script>
+
+</html>

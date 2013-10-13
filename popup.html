@@ -1,0 +1,190 @@
+<html>
+    <head>
+        <script src="popup.js"></script>
+        <script src="jquery.js"></script>
+        <style type="text/css" media="screen">
+            body { 
+              min-width:250px; 
+              text-align: center; 
+              background: url('background.png');
+              color: white;
+            }
+            a {
+              color: white;
+            }
+            a:hover {
+              text-decoration: underline;
+            }
+
+            button {
+              font-family: Arial, Helvetica, sans-serif;
+              color: #123d54;
+              background: -moz-linear-gradient(
+                top,
+                #FFFFFF 0%,
+                #FFFFFF);
+              background: -webkit-gradient(
+                linear, left top, left bottom, 
+                from(#FFFFFF),
+                to(#FFFFFF));
+              -moz-border-radius: 6px;
+              -webkit-border-radius: 6px;
+              border-radius: 6px;
+              border: 1px solid #003366;
+              -moz-box-shadow:
+                0px 1px 3px rgba(000,000,000,0.5),
+                inset 0px 0px 1px rgba(255,255,255,1);
+              -webkit-box-shadow:
+                0px 1px 3px rgba(000,000,000,0.5),
+                inset 0px 0px 1px rgba(255,255,255,1);
+              box-shadow:
+                0px 1px 3px rgba(000,000,000,0.5),
+                inset 0px 0px 1px rgba(255,255,255,1);
+              text-shadow:
+                0px -1px 0px rgba(000,000,000,0.7),
+                0px 1px 0px rgba(255,255,255,0.3);
+            }
+
+            button:hover {
+              cursor: pointer;
+              background: -webkit-gradient(
+                linear, left top, left bottom, 
+                from(#00FF33),
+                to(#00FF33));
+            }
+
+            input[type=text] {
+              border: 1px solid #ccc;
+              border-radius: 3px;
+              box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+              width:160px;
+              min-height: 28px;
+              padding: 4px 20px 4px 8px;
+              font-size: 12px;
+              -moz-transition: all .2s linear;
+              -webkit-transition: all .2s linear;
+              transition: all .2s linear;
+            }
+
+            input[type=text]:hover {
+              border-color: #51a7e8;
+              box-shadow: inset 0 1px 2px rgba(0,0,0,0.1),0 0 5px rgba(81,167,232,0.5);
+              outline: none;
+            }
+
+            select {
+              padding:3px;
+              margin: 0;
+              min-width: 90px;
+              -webkit-border-radius:4px;
+              -moz-border-radius:4px;
+              border-radius:4px;
+              -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+              -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+              box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+              background: #f8f8f8;
+              color:#888;
+              border:none;
+              outline:none;
+              display: inline-block;
+              -webkit-appearance:none;
+              -moz-appearance:none;
+              appearance:none;
+              cursor:pointer;  
+            }
+
+            label {
+              position:relative;
+              margin-top: 5px;
+            }
+            label:after {
+                content:'<>';
+                font:11px "Consolas", monospace;
+                color:#aaa;
+                -webkit-transform:rotate(90deg);
+                -moz-transform:rotate(90deg);
+                -ms-transform:rotate(90deg);
+                transform:rotate(90deg);
+                right:8px; top:2px;
+                padding:0 0 2px;
+                border-bottom:1px solid #ddd;
+                position:absolute;
+                pointer-events:none;
+            }
+            label:before {
+                content:'';
+                right:6px; top:0px;
+                width:20px; height:20px;
+                background:#f8f8f8;
+                position:absolute;
+                pointer-events:none;
+                display:block;
+            }
+
+            #oinkme,#lolkingme { font-size: 20px; }
+            .byline {font-size:10px;}
+            .quicklinks {font-size:13px;}
+
+            #playerLookup {
+              margin-bottom: 22px;
+            }
+
+            h3 {
+              margin-bottom: 3px;
+              margin-top: 3px;
+            }
+
+            .btnSearch {
+              margin-bottom: 14px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <img src="icon.png">LoLPiggy V0.1<br> -->
+        <button id='oinkme'>Nexus Me</button><button id='lolkingme'>LoLKing Me</button>
+        <a href="options.html" target="_blank">Setting</a> (Set up your summoner name)
+        <hr>
+        <div id="playerLookup">
+          <h3>Summoner Search</h3>
+          <input type="text" name="summonerName" id="summonerName">
+          <button id='SummonerSearch' class="btnSearch" >Search</button><br>
+          <label>
+             <select id="summonerSearchSource">
+             <option value="lolnexus">LoLNexus</option>
+             <option value="lolking">LoLKing</option>
+            </select>
+          </label>
+
+          <label>
+            Server: <select id="SummonerServer">
+             <option value="NA">NA</option>
+             <option value="EUW">EUW</option>
+             <option value="EUNE">EUNE</option>
+             <option value="BR">BR</option>
+             <option value="TR">TR</option>
+             <option value="RU">RU</option>
+             <option value="LAN">LAN</option>
+             <option value="LAS">LAS</option>
+             <option value="OCE">OCE</option>
+            </select>
+          </label>
+        </div>
+        <hr>
+        <div id="championGuides">
+          <h3>Champion Guides</h3>
+          <input type="text" name="championName"  id="championName">
+          <button id='ChampionSearch' class="btnSearch">Search</button><br>
+          <label>
+           Source: <select id="championSearchSource">
+           <option value="guideLolpro">LolPro</option>
+           <option value="guideSolomid">Solomid</option>
+<!--            <option value="guideMobafire">Mobafire</option> -->
+           <option value="guideLeaguecraft">Leaguecraft</option>
+          </select>
+          </label>
+        </div>
+        <hr>
+ <!--        <p class="quicklinks"><b>Quicklinks: </b><a href="http://www.reddit.com/r/leagueoflegends">r/lol</a> | <a href="http://lol.gamepedia.com/League_of_Legends_Wiki">Leaguepedia</a> | <a href="http://www.twitch.tv/directory/game/League%20of%20Legends">Streams</a></p> -->
+        <p class="byline">Created by Piggybank (NA Server)</p>
+    </body>
+</html>
