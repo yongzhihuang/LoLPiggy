@@ -1,16 +1,15 @@
 <html>
     <head>
         <script src="popup.js"></script>
-        <script src="jquery.js"></script>
         <style type="text/css" media="screen">
             body { 
               min-width:250px; 
-              text-align: center; 
-              background: url('background.png');
-              color: white;
+              padding-left: 15px;
+              background: white;
+              color: black;
             }
             a {
-              color: white;
+              color: black;
             }
             a:hover {
               text-decoration: underline;
@@ -47,13 +46,13 @@
 
             button:hover {
               cursor: pointer;
-              background: -webkit-gradient(
-                linear, left top, left bottom, 
-                from(#00FF33),
-                to(#00FF33));
+              background: rgb(241, 241, 241);
             }
 
             input[type=text] {
+              text-align: center;
+              font-weight: bold;
+              font-size: 16px
               border: 1px solid #ccc;
               border-radius: 3px;
               box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
@@ -67,8 +66,8 @@
             }
 
             input[type=text]:hover {
-              border-color: #51a7e8;
-              box-shadow: inset 0 1px 2px rgba(0,0,0,0.1),0 0 5px rgba(81,167,232,0.5);
+
+              box-shadow: inset 0 1px 2px rgba(0,0,0,0.1),0 0 5px #000;
               outline: none;
             }
 
@@ -76,15 +75,16 @@
               padding:3px;
               margin: 0;
               min-width: 90px;
+              margin-top:5px;
               -webkit-border-radius:4px;
               -moz-border-radius:4px;
               border-radius:4px;
-              -webkit-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
-              -moz-box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
-              box-shadow: 0 3px 0 #ccc, 0 -1px #fff inset;
+              -webkit-box-shadow: 0 3px 0 #fff, 0 -1px #fff inset;
+              -moz-box-shadow: 0 3px 0 #fff, 0 -1px #fff inset;
+              box-shadow: 0 3px 0 #fff, 0 -1px #fff inset;
               background: #f8f8f8;
-              color:#888;
-              border:none;
+              color:black;
+              border: solid 1px #333;
               outline:none;
               display: inline-block;
               -webkit-appearance:none;
@@ -100,7 +100,7 @@
             label:after {
                 content:'<>';
                 font:11px "Consolas", monospace;
-                color:#aaa;
+                color:black;
                 -webkit-transform:rotate(90deg);
                 -moz-transform:rotate(90deg);
                 -ms-transform:rotate(90deg);
@@ -114,7 +114,8 @@
             label:before {
                 content:'';
                 right:6px; top:0px;
-                width:20px; height:20px;
+                width:20px; 
+                height:19px;
                 background:#f8f8f8;
                 position:absolute;
                 pointer-events:none;
@@ -122,20 +123,22 @@
             }
 
             #oinkme,#lolkingme { font-size: 20px; }
-            .byline {font-size:10px;}
+            .byline {font-size:15px;}
             .quicklinks {font-size:13px;}
 
-            #playerLookup {
-              margin-bottom: 22px;
-            }
 
             h3 {
-              margin-bottom: 3px;
-              margin-top: 3px;
+              margin-bottom: 5px;
+              font-family: freight-sans-pro, sans-serif;
+              font-weight: 900;
+              background-color: #fff; 
+              color: #202c2d;
+              text-align: center;
             }
 
+
             .btnSearch {
-              margin-bottom: 14px;
+              margin-top: 14px;
             }
         </style>
     </head>
@@ -146,12 +149,15 @@
         <hr>
         <div id="playerLookup">
           <h3>Summoner Search</h3>
-          <input type="text" name="summonerName" id="summonerName">
+          <input type="text" name="summonerName" id="summonerName" autofocus="true">
           <button id='SummonerSearch' class="btnSearch" >Search</button><br>
           <label>
              <select id="summonerSearchSource">
              <option value="lolnexus">LoLNexus</option>
+             <option value="lolteam">LoLTeam</option>
              <option value="lolking">LoLKing</option>
+             <option value="kassadin">Kassadin</option>
+             <option value="summoning">Summoning</option>
             </select>
           </label>
 
@@ -172,16 +178,26 @@
         <hr>
         <div id="championGuides">
           <h3>Champion Guides</h3>
-          <input type="text" name="championName"  id="championName">
+          <input type="text" name="championName"  id="championName" >
           <button id='ChampionSearch' class="btnSearch">Search</button><br>
           <label>
            Source: <select id="championSearchSource">
            <option value="guideLolpro">LolPro</option>
            <option value="guideSolomid">Solomid</option>
+           <option value="guideProbuilds">Probuilds</option>
+
 <!--            <option value="guideMobafire">Mobafire</option> -->
            <option value="guideLeaguecraft">Leaguecraft</option>
+
           </select>
           </label>
+        </div>
+
+        <hr>
+        <div id="counterPick">
+          <h3>Counter Picker</h3>
+          <input type="text" name="counterChampionName"  id="counterChampionName" >
+          <button id='counterChampionSearch' class="btnSearch">Search</button><br>
         </div>
         <hr>
  <!--        <p class="quicklinks"><b>Quicklinks: </b><a href="http://www.reddit.com/r/leagueoflegends">r/lol</a> | <a href="http://lol.gamepedia.com/League_of_Legends_Wiki">Leaguepedia</a> | <a href="http://www.twitch.tv/directory/game/League%20of%20Legends">Streams</a></p> -->

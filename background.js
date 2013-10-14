@@ -36,6 +36,20 @@ chrome.extension.onMessage.addListener(
 
         break;
 
+        case "counterChampionSearch-click":
+            // execute the content script
+            chrome.tabs.executeScript(null, { // defaults to the current tab
+                file: "contentscript.js", // script to inject into page and run in sandbox
+                allFrames: true // This injects script into iframes in the page and doesn't work before 4.0.266.0.
+            });
+            sendResponse({}); // sending back empty response to sender
+
+            var counterChampionName = request.championName;
+            var newURL = 'http://www.championselect.net/champ/' + counterChampionName;
+            chrome.tabs.create({ url: newURL });
+
+        break;
+
         case "summonerSearch-click":
             // execute the content script
             chrome.tabs.executeScript(null, { // defaults to the current tab
@@ -58,12 +72,28 @@ chrome.extension.onMessage.addListener(
                   chrome.tabs.create({ url: searchUrl });
                 break;
 
+                case 'lolteam':
+                  searchUrl = 'http://www.lolteam.net/game/' + searchSummoner;
+                  chrome.tabs.create({ url: searchUrl });
+                break;
+
                 case 'lolking':
                   searchUrl = 'http://www.lolking.net/search?name=' + searchSummoner;
                   chrome.tabs.create({ url: searchUrl });
                 break;
+
+                case 'kassadin':
+                  searchUrl = 'http://quickfind.kassad.in/profile/na/' + searchSummoner;
+                  chrome.tabs.create({ url: searchUrl });
+                break;
+
+                case 'summoning':
+                  searchUrl = 'http://summoning.net/v1/lyralei/na/' + searchSummoner;
+                  chrome.tabs.create({ url: searchUrl });
+                break;
+
                 default:
-                  searchUrl = 'http://www.reddit.com';
+                  searchUrl = 'http://www.ggwallpaper.com?source=extensionerror';
                   chrome.tabs.create({ url: searchUrl });
               }
         break;
@@ -98,6 +128,11 @@ chrome.extension.onMessage.addListener(
                   chrome.tabs.create({ url: searchUrl });
                 break;
 
+                case 'probuilds':
+                  searchUrl = 'http://www.probuilds.net/champions/' + searchChampion;
+                  chrome.tabs.create({ url: searchUrl });
+                break;
+
                 case 'lolpro':
                   searchUrl = 'http://www.lolpro.com/guides/' + searchChampion;
                   chrome.tabs.create({ url: searchUrl });
@@ -109,7 +144,7 @@ chrome.extension.onMessage.addListener(
                 break;
 
                 default:
-                  searchUrl = 'http://www.reddit.com';
+                  searchUrl = 'http://www.ggwallpaper.com?source=extensionerror';
                   chrome.tabs.create({ url: searchUrl });
               }
         break;
