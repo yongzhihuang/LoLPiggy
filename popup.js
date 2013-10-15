@@ -20,7 +20,7 @@ function summonerSearchclickHandler(e) {
     var searchServerEl = document.getElementById("SummonerServer");
     var searchServer = searchServerEl.children[searchServerEl.selectedIndex].text;
 
-    _gaq.push(['_trackEvent', 'Search Summoner', summonerName]);
+    _gaq.push(['_trackEvent', 'Search Summoner', searchServer, summonerName]);
     chrome.extension.sendMessage({directive: "summonerSearch-click", summonerName: summonerName, searchSource: searchSource, searchServer: searchServer}, function(response) {
         this.close(); // close the popup when the background finishes processing request
     });
@@ -39,7 +39,7 @@ function championSearchclickHandler(e) {
     var searchSourceEl = document.getElementById("championSearchSource");
     var searchSource = searchSourceEl.children[searchSourceEl.selectedIndex].text;
 
-    _gaq.push(['_trackEvent', 'Search Guide', championName]);
+    _gaq.push(['_trackEvent', 'Search Guide', searchSource, championName]);
     chrome.extension.sendMessage({directive: "championSearch-click", championName: championName, searchSource: searchSource}, function(response) {
         this.close(); // close the popup when the background finishes processing request
     });

@@ -1,8 +1,8 @@
 {
     "name": "LoLPiggy",
     "manifest_version": 2,
-    "version": "0.16",
-    "description": "Instant League of Legends Player and guides look up",
+    "version": "0.16.2",
+    "description": "REAL TIME League of Legends player lookup, champion guide and counterpicker.",
     "options_page": "options.html",
     "browser_action": {
         "default_icon": "icon.png",

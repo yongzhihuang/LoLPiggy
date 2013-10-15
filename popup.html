@@ -3,10 +3,13 @@
         <script src="popup.js"></script>
         <style type="text/css" media="screen">
             body { 
+              margin:0;
+              padding:0;
               min-width:250px; 
-              padding-left: 15px;
               background: white;
               color: black;
+              text-align: center;
+
             }
             a {
               color: black;
@@ -46,7 +49,7 @@
 
             button:hover {
               cursor: pointer;
-              background: rgb(241, 241, 241);
+              background: rgb(255, 106, 36);
             }
 
             input[type=text] {
@@ -59,6 +62,7 @@
               width:160px;
               min-height: 28px;
               padding: 4px 20px 4px 8px;
+              border: solid 1px;
               font-size: 12px;
               -moz-transition: all .2s linear;
               -webkit-transition: all .2s linear;
@@ -122,13 +126,13 @@
                 display:block;
             }
 
-            #oinkme,#lolkingme { font-size: 20px; }
+            #oinkme,#lolkingme { font-size: 16px; }
             .byline {font-size:15px;}
             .quicklinks {font-size:13px;}
 
 
             h3 {
-              margin-bottom: 5px;
+              margin: 0;
               font-family: freight-sans-pro, sans-serif;
               font-weight: 900;
               background-color: #fff; 
@@ -136,16 +140,55 @@
               text-align: center;
             }
 
+            .note {
+              font-size: 13px;
+              text-align: center;
+              margin: 0;
+              padding: 0;
+            }
 
             .btnSearch {
               margin-top: 14px;
             }
+
+            #header {
+              height: 66px;
+              background: url(header-bg.png) repeat-x;
+              overflow: hidden;
+            }
+
+            .floatl {
+              font-size: 13px;
+              font-weight: bold;
+              float: left;
+              width: auto;
+            }
+
+            .floatr {
+              float: right;
+              width: auto;
+            }
+
+            .appName {
+              font-size: 20px;
+              font-family: sans-serif;
+              width: 181px;
+            }
         </style>
     </head>
     <body>
+        <div id="header">
+          <div class="floatl">
+            <p class="appName">LoLPiggy</p>
+<!--             <p class="subtitle">Your LoL lookup buddy</p> -->
+          </div>
+          <div class="floatr"><img src="icon.png" ></div>
+        </div>
+
+
         <!-- <img src="icon.png">LoLPiggy V0.1<br> -->
         <button id='oinkme'>Nexus Me</button><button id='lolkingme'>LoLKing Me</button>
-        <a href="options.html" target="_blank">Setting</a> (Set up your summoner name)
+        <p class="note">(<a href="options.html" target="_blank">set up</a>  your summoner name)</p>
         <hr>
         <div id="playerLookup">
           <h3>Summoner Search</h3>
@@ -154,8 +197,8 @@
           <label>
              <select id="summonerSearchSource">
              <option value="lolnexus">LoLNexus</option>
-             <option value="lolteam">LoLTeam</option>
              <option value="lolking">LoLKing</option>
+             <option value="lolteam">LoLTeam</option>
              <option value="kassadin">Kassadin</option>
              <option value="summoning">Summoning</option>
             </select>
@@ -184,6 +227,7 @@
            Source: <select id="championSearchSource">
            <option value="guideLolpro">LolPro</option>
            <option value="guideSolomid">Solomid</option>
+           <option value="guideLolking">LolKing</option>
            <option value="guideProbuilds">Probuilds</option>
 
 <!--            <option value="guideMobafire">Mobafire</option> -->
@@ -199,8 +243,7 @@
           <input type="text" name="counterChampionName"  id="counterChampionName" >
           <button id='counterChampionSearch' class="btnSearch">Search</button><br>
         </div>
-        <hr>
+        <br>
  <!--        <p class="quicklinks"><b>Quicklinks: </b><a href="http://www.reddit.com/r/leagueoflegends">r/lol</a> | <a href="http://lol.gamepedia.com/League_of_Legends_Wiki">Leaguepedia</a> | <a href="http://www.twitch.tv/directory/game/League%20of%20Legends">Streams</a></p> -->
-        <p class="byline">Created by Piggybank (NA Server)</p>
     </body>
 </html>

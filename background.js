@@ -2,6 +2,8 @@ chrome.extension.onMessage.addListener(
     function(request, sender, sendResponse) {
         var defaultSummonerName = localStorage["defaultSummonerName"];
         var defaultSummonerServer = localStorage["defaultSummonerServer"];
+        var newURL;
+
         switch (request.directive) {
         case "lolNexus-click":
             // execute the content script
@@ -14,7 +16,12 @@ chrome.extension.onMessage.addListener(
                document.getElementById('announcement').innerHTML = "Summoner Name not set up, please Click Here to set it up"; 
                return;
             }
-            var newURL = 'http://www.lolnexus.com/NA/search?name=' + defaultSummonerName + '&server=' + defaultSummonerServer;
+
+            newURL = 'http://www.lolnexus.com/scouter/search?name=' + defaultSummonerName + '&server=' + defaultSummonerServer;
+
+            if (defaultSummonerServer == 'na') {
+              newURL = 'http://www.lolnexus.com/NA/search?name=' + defaultSummonerName + '&server=' + defaultSummonerServer;
+            }
             chrome.tabs.create({ url: newURL });
         break;
 
@@ -68,7 +75,10 @@ chrome.extension.onMessage.addListener(
               //parse source
               switch (searchSource) {
                 case 'lolnexus':
-                  searchUrl = 'http://www.lolnexus.com/NA/search?name=' + searchSummoner + '&server=' + summonerServer;
+                  searchUrl = 'http://www.lolnexus.com/scouter/search?name=' + searchSummoner + '&server=' + summonerServer;
+                  if (summonerServer == 'na') {
+                    searchUrl = 'http://www.lolnexus.com/NA/search?name=' + searchSummoner + '&server=' + summonerServer;
+                  }
                   chrome.tabs.create({ url: searchUrl });
                 break;
 
@@ -130,6 +140,11 @@ chrome.extension.onMessage.addListener(
 
                 case 'probuilds':
                   searchUrl = 'http://www.probuilds.net/champions/' + searchChampion;
+                  chrome.tabs.create({ url: searchUrl });
+                break;
+
+                case 'lolking':
+                  searchUrl = 'http://www.lolking.net/guides/list.php?champion=' + searchChampion;
                   chrome.tabs.create({ url: searchUrl });
                 break;
 
